@@ -1,13 +1,9 @@
 /**
- * ⚠️ CITATIONS À FAIRE VALIDER AVANT MISE EN LIGNE.
+ * Témoignages validés par leurs auteurs (Christophe, Melting — Quentin,
+ * Mon Sauveteur) le 22 juillet 2026.
  *
- * Les deux témoignages ci-dessous sont des PROPOSITIONS rédigées à partir du
- * contexte projet (design system + sections existantes). Ni Christophe ni
- * Quentin ne les ont prononcées. Ce sont des personnes réelles, nommées, avec
- * leur fonction et leur entreprise : publier ces phrases en l'état revient à
- * leur attribuer des propos qu'elles n'ont pas tenus.
- *
- * À faire relire et amender par chacun d'eux, puis remplacer le texte ici.
+ * Ces citations sont attribuées nommément à des personnes réelles : toute
+ * modification ultérieure du texte doit repasser par leur accord.
  */
 type Testimonial = {
   quote: string
