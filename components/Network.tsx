@@ -139,7 +139,7 @@ const POINTS: AccordionItem[] = [
     number: '03',
     title: 'Autonomie & flexibilité',
     content:
-      'Les membres consultent leur planning, renseignent leurs disponibilités et acceptent les offres en instantané.',
+      'Les intervenants consultent leur planning, renseignent leurs disponibilités et acceptent les offres en instantané.',
   },
 ]
 
@@ -170,7 +170,7 @@ export function Network() {
           </h2>
           <p className="mb-6 text-base leading-[1.7] text-gray-600">
             SAM&apos;va s&apos;adapte précisément aux besoins des établissements
-            comme de leur communauté de professionnels.
+            comme des professionnels de terrain.
           </p>
 
           {/* Hauteur mini : absorbe l'ouverture/fermeture d'un panneau pour que

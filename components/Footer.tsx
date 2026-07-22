@@ -1,10 +1,6 @@
 import { Logo } from './Logo'
 
-const LINKS = [
-  'Mentions légales',
-  'Protection des données (RGPD)',
-  'Modèle Coopératif',
-]
+const LINKS = ['Mentions légales', 'Protection des données (RGPD)']
 
 export function Footer() {
   return (
@@ -13,8 +9,7 @@ export function Footer() {
         <div>
           <Logo size={20} tone="white" />
           <p className="mt-2 text-[13px] leading-relaxed opacity-70">
-            © 2026 SAM&apos;va — Solution d&apos;Accompagnement Mutualisé. Tous
-            droits réservés.
+            © 2026 SAM&apos;va. Tous droits réservés.
           </p>
         </div>
         {/* gap-x réduit et hauteur mini de 44px : au doigt, ces liens ne

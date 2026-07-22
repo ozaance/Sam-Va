@@ -3,7 +3,7 @@ import { PieChart } from 'lucide-react'
 const METRICS = [
   { value: '128', label: 'Offres actives', tone: 'text-navy-900' },
   { value: '94%', label: 'Couverture', tone: 'text-teal-500' },
-  { value: '312', label: 'Membres', tone: 'text-fuchsia-500' },
+  { value: '312', label: 'Profils', tone: 'text-fuchsia-500' },
 ]
 
 /** Bar heights and tints are fixed values from the design file, not data. */

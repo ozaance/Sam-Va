@@ -66,7 +66,7 @@ export function Features() {
         <div className="lg:sticky lg:top-24">
           <span className="eyebrow text-teal-500">Fonctionnalités</span>
           <h2 className="mb-4 mt-3.5 text-[32px] font-extrabold leading-[1.1] text-navy-900 [text-wrap:balance] lg:text-h2">
-            Un SIRH pensé pour le collectif
+            Un SIRH pensé pour le terrain
           </h2>
           <p className="mb-7 text-base leading-[1.7] text-gray-600">
             Automatisez les tâches administratives répétitives et sécurisez

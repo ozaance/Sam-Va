@@ -50,8 +50,7 @@ export function Pricing() {
                 Prêt à rejoindre le réseau ?
               </h2>
               <p className="mt-4 max-w-md text-[17px] leading-[1.7] text-gray-600">
-                Choisissez votre point d&apos;entrée dans l&apos;écosystème
-                SAM&apos;va.
+                Établissement ou professionnel : choisissez votre accès.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -69,7 +68,7 @@ export function Pricing() {
                   href="mailto:contact@samva.io"
                   className="rounded-sm border-[1.5px] border-fuchsia-500 px-5 py-[13px] text-[15px] font-semibold text-fuchsia-500 transition-colors hover:bg-fuchsia-100"
                 >
-                  Rejoindre la communauté
+                  Créer mon profil professionnel
                 </a>
               </div>
 

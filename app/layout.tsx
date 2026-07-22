@@ -31,13 +31,13 @@ export const metadata: Metadata = {
    * Voir le rapport de session. Ne pas remettre l'icône dans app/.
    */
   icons: { icon: '/icon.svg' },
-  title: "SAM'va — L'agilité RH au service du collectif",
+  title: "SAM'va — L'agilité RH au service de vos équipes",
   description:
-    "SAM'va (Solution d'Accompagnement Mutualisé) centralise les opportunités locales, automatise vos plannings et réunit une véritable communauté de professionnels engagés.",
+    "SAM'va est le SIRH qui décharge vos équipes RH de la saisie, sécurise vos plannings sur la réglementation et automatise contrats et DPAE.",
   openGraph: {
-    title: "SAM'va — L'agilité RH au service du collectif",
+    title: "SAM'va — L'agilité RH au service de vos équipes",
     description:
-      "Écosystème RH collaboratif & réseau de territoire pour les établissements médico-sociaux et leur communauté de professionnels.",
+      "Le SIRH des établissements médico-sociaux : plannings conformes, contrats automatisés, remplacements couverts en quelques clics.",
     locale: 'fr_FR',
     type: 'website',
   },
