@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* === COULEURS === */
+    --color-teal-500: #0d9e8e;
+    --color-teal-400: #1abba8;
+    --color-teal-100: #e6f5f3;
+    --color-teal-50: #f0faf9;
+
+    --color-fuchsia-500: #f0145a;
+    --color-fuchsia-400: #ff2d6f;
+    --color-fuchsia-100: #fee9ef;
+
+    --color-navy-900: #1a2340;
+    --color-navy-700: #2d3a5a;
+    --color-gray-600: #5a6180;
+    --color-gray-400: #9aa0b4;
+    --color-gray-200: #eef0f4;
+    --color-gray-100: #f7f8fa;
+    --color-white: #ffffff;
+
+    --color-success: #16a34a;
+    --color-warning: #d97706;
+    --color-error: #dc2626;
+    --color-info: #0284c7;
+
+    /* === ESPACEMENT === */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+
+    /* === BORDER RADIUS === */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 32px;
+    --radius-full: 9999px;
+
+    /* === OMBRES === */
+    --shadow-xs: 0 1px 3px rgba(26, 35, 64, 0.06);
+    --shadow-sm: 0 2px 8px rgba(26, 35, 64, 0.08);
+    --shadow-md: 0 4px 20px rgba(13, 158, 142, 0.1), 0 1px 4px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 8px 40px rgba(26, 35, 64, 0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Sticky 68px header must not cover anchored section headings. */
+    scroll-padding-top: 68px;
+  }
+
+  body {
+    @apply bg-white text-navy-900 antialiased;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Page shell: 1200px max-width, 24px gutters (design file `--max-width`). */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6;
+  }
+
+  /* Vertical rhythm for major sections — `--sec-pad`, "Comfortable" = 100px. */
+  .section-pad {
+    @apply py-[68px] lg:py-[100px];
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.1em];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
