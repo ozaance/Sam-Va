@@ -102,7 +102,7 @@ export function PartnerMarquee() {
     <section className="overflow-hidden bg-white py-11 [--logo-h:32px] sm:[--logo-h:44px]">
       <div className="shell">
         <p className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.12em] text-gray-400">
-          Ils construisent le réseau avec nous
+          Ils utilisent SAM
         </p>
       </div>
 

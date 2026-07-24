@@ -6,8 +6,8 @@ import { Logo } from './Logo'
 
 const NAV_LINKS = [
   { href: '#features', label: 'Fonctionnalités' },
-  { href: '#reseau', label: 'Le réseau' },
-  { href: '#engagements', label: 'Nos engagements' },
+  { href: '#solution', label: 'La solution' },
+  { href: '#histoire', label: 'Notre histoire' },
   { href: '#contact', label: 'Connexion' },
 ]
 
@@ -40,14 +40,14 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-navy-900/[0.85] transition-colors hover:text-teal-500"
+              className="text-sm font-medium text-navy-900/[0.85] transition-colors hover:text-violet-500"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-sm bg-teal-500 px-[22px] py-[10px] text-sm font-bold text-white transition-colors hover:bg-teal-400"
+            className="rounded-sm bg-violet-500 px-[22px] py-[10px] text-sm font-bold text-white transition-colors hover:bg-violet-400"
           >
             Espace Employeur
           </a>
@@ -84,7 +84,7 @@ export function Header() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-sm bg-teal-500 px-[22px] py-3 text-center text-sm font-bold text-white"
+              className="mt-2 rounded-sm bg-violet-500 px-[22px] py-3 text-center text-sm font-bold text-white"
             >
               Espace Employeur
             </a>

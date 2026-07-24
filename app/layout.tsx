@@ -31,13 +31,13 @@ export const metadata: Metadata = {
    * Voir le rapport de session. Ne pas remettre l'icône dans app/.
    */
   icons: { icon: '/icon.svg' },
-  title: "SAM'va — L'agilité RH au service de vos équipes",
+  title: "SAM — S'occupe de tout, vous vous occupez d'eux",
   description:
-    "SAM'va est le SIRH qui décharge vos équipes RH de la saisie, sécurise vos plannings sur la réglementation et automatise contrats et DPAE.",
+    'SAM est le SIRH qui décharge vos équipes de la saisie, sécurise vos plannings sur la réglementation et automatise contrats et DPAE.',
   openGraph: {
-    title: "SAM'va — L'agilité RH au service de vos équipes",
+    title: "SAM — S'occupe de tout, vous vous occupez d'eux",
     description:
-      "Le SIRH des établissements médico-sociaux : plannings conformes, contrats automatisés, remplacements couverts en quelques clics.",
+      'Le SIRH des établissements médico-sociaux : plannings conformes, contrats automatisés, recrutement et gestion des effectifs.',
     locale: 'fr_FR',
     type: 'website',
   },

@@ -4,15 +4,19 @@
 
 @layer base {
   :root {
-    /* === COULEURS === */
-    --color-teal-500: #0d9e8e;
-    --color-teal-400: #1abba8;
-    --color-teal-100: #e6f5f3;
-    --color-teal-50: #f0faf9;
+    /* === COULEURS (charte SAM) === */
+    --color-violet-500: #8d3cff;
+    --color-violet-400: #a45cff;
+    --color-violet-100: #efe4ff;
+    --color-violet-50: #f7f1ff;
 
-    --color-fuchsia-500: #f0145a;
-    --color-fuchsia-400: #ff2d6f;
-    --color-fuchsia-100: #fee9ef;
+    --color-orange-500: #f06400;
+    --color-orange-400: #ff7a26;
+    --color-orange-100: #feead9;
+
+    --color-cream: #ffe6b4;
+    --color-lila-light: #efecf9;
+    --color-lila: #c7c4d8;
 
     --color-navy-900: #1a2340;
     --color-navy-700: #2d3a5a;
@@ -51,7 +55,7 @@
     /* === OMBRES === */
     --shadow-xs: 0 1px 3px rgba(26, 35, 64, 0.06);
     --shadow-sm: 0 2px 8px rgba(26, 35, 64, 0.08);
-    --shadow-md: 0 4px 20px rgba(13, 158, 142, 0.1), 0 1px 4px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 20px rgba(141, 60, 255, 0.12), 0 1px 4px rgba(0, 0, 0, 0.04);
     --shadow-lg: 0 8px 40px rgba(26, 35, 64, 0.12);
   }
 

@@ -37,15 +37,27 @@ export function UniqueAccordion({
   items,
   defaultOpenId,
   className,
+  collapsible = true,
+  onActiveChange,
 }: {
   items: AccordionItem[]
   defaultOpenId?: string | null
   className?: string
+  /** false : un item reste toujours ouvert (utile quand il pilote un visuel). */
+  collapsible?: boolean
+  /** Notifié à chaque changement d'item actif. */
+  onActiveChange?: (id: string | null) => void
 }) {
   const [activeId, setActiveId] = useState<string | null>(
     defaultOpenId === undefined ? (items[0]?.id ?? null) : defaultOpenId,
   )
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+
+  const select = (id: string, isActive: boolean) => {
+    const next = isActive ? (collapsible ? null : id) : id
+    setActiveId(next)
+    onActiveChange?.(next)
+  }
 
   return (
     <div className={cn('w-full', className)}>
@@ -57,18 +69,18 @@ export function UniqueAccordion({
           <div key={item.id}>
             <motion.button
               type="button"
-              onClick={() => setActiveId(isActive ? null : item.id)}
+              onClick={() => select(item.id, isActive)}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
               aria-expanded={isActive}
               aria-controls={`acc-${item.id}`}
-              className="group relative w-full outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+              className="group relative w-full outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
               initial={false}
             >
               <div className="flex items-center gap-5 px-1 py-5">
                 <div className="relative flex h-10 w-10 shrink-0 items-center justify-center">
                   <motion.div
-                    className="absolute inset-0 rounded-full bg-teal-500"
+                    className="absolute inset-0 rounded-full bg-violet-500"
                     initial={false}
                     animate={{
                       scale: isActive ? 1 : isHovered ? 0.85 : 0,
@@ -111,7 +123,7 @@ export function UniqueAccordion({
                       aria-hidden="true"
                       className={cn(
                         'transition-colors duration-200',
-                        isActive ? 'text-teal-500' : 'text-navy-900',
+                        isActive ? 'text-violet-500' : 'text-navy-900',
                       )}
                       animate={{ opacity: isActive || isHovered ? 1 : 0.4 }}
                       transition={{ duration: 0.2 }}
@@ -129,7 +141,7 @@ export function UniqueAccordion({
 
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200" />
               <motion.div
-                className="absolute bottom-0 left-0 h-px origin-left bg-teal-500"
+                className="absolute bottom-0 left-0 h-px origin-left bg-violet-500"
                 style={{ width: '100%' }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: isActive ? 1 : isHovered ? 0.3 : 0 }}

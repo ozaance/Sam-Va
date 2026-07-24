@@ -3,7 +3,8 @@ import { Hero } from '@/components/Hero'
 import { PartnerMarquee } from '@/components/PartnerMarquee'
 import { Features } from '@/components/Features'
 import { Network } from '@/components/Network'
-import { Engagements } from '@/components/Engagements'
+import { Histoire } from '@/components/Histoire'
+import { MeltingPartner } from '@/components/MeltingPartner'
 import { Pricing } from '@/components/Pricing'
 import { Footer } from '@/components/Footer'
 
@@ -16,7 +17,8 @@ export default function HomePage() {
         <PartnerMarquee />
         <Features />
         <Network />
-        <Engagements />
+        <Histoire />
+        <MeltingPartner />
         <Pricing />
       </main>
       <Footer />

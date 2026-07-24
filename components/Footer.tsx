@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <Logo size={20} tone="white" />
           <p className="mt-2 text-[13px] leading-relaxed opacity-70">
-            © 2026 SAM&apos;va. Tous droits réservés.
+            © 2026 SAM. Tous droits réservés.
           </p>
         </div>
         {/* gap-x réduit et hauteur mini de 44px : au doigt, ces liens ne

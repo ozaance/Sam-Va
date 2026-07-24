@@ -1,40 +1,54 @@
 import type { Config } from 'tailwindcss'
 
 /**
- * Tokens from `samva-design-system.md` §10.
- * The `tint-*` scales are the design file's `color-mix(in srgb, <color> N%, #fff)`
- * expressions resolved against the fixed Teal & Fuchsia palette, so the rendered
- * output matches the prototype without relying on `color-mix` support.
+ * Charte SAM.
+ * Primaire  : violet   #8D3CFF
+ * Lila clair : #EFECF9 (fonds de section)  |  Lila foncé : #C7C4D8 (bordures)
+ * Jaune      : #FFE6B4 (boutons sur fond violet, texte foncé)
+ * Orange     : #F06400 (accent ponctuel, souvent avec le jaune)
+ *
+ * `violet` (ex-teal) reste la famille primaire et `orange` (ex-fuchsia) l'accent,
+ * pour que les noms de classe gardent un sens. Les échelles `tint*` sont les
+ * anciens `color-mix(<couleur> N%, #fff)` pré-calculés en hex sur la nouvelle
+ * palette, afin de ne pas dépendre de color-mix.
  */
 const config: Config = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        teal: {
-          50: '#F0FAF9',
-          100: '#E6F5F3',
-          400: '#1ABBA8',
-          500: '#0D9E8E',
-          deep: '#0C9183', // accent @ 92% over black — offset card shadows
-          tint7: '#EEF8F7',
-          tint12: '#E2F3F1',
-          tint14: '#DDF1EF',
-          tint20: '#CFECE8',
-          tint22: '#CAEAE6',
-          tint30: '#B6E2DD',
-          tint40: '#9ED8D2',
-          tint45: '#92D3CC',
-          tint55: '#7ACAC1',
+        violet: {
+          50: '#F7F1FF',
+          100: '#EFE4FF',
+          400: '#A45CFF',
+          500: '#8D3CFF',
+          deep: '#7A33E0', // primaire assombrie — plaques d'ombre décalées
+          tint7: '#F5EFFF',
+          tint12: '#F1E8FF',
+          tint14: '#EFE4FF',
+          tint20: '#E8D8FF',
+          tint22: '#E6D4FF',
+          tint30: '#DDC5FF',
+          tint40: '#D1B1FF',
+          tint45: '#CCA7FF',
+          tint55: '#BE94FF',
         },
-        fuchsia: {
-          100: '#FEE9EF',
-          400: '#FF2D6F',
-          500: '#F0145A',
-          tint12: '#FDE3EB',
-          tint14: '#FDDEE8',
-          tint20: '#FCD0DE',
-          tint40: '#F9A1BD',
+        orange: {
+          100: '#FEEAD9',
+          400: '#FF7A26',
+          500: '#F06400',
+          tint12: '#FDECE0',
+          tint14: '#FDE9DB',
+          tint20: '#FCE0CC',
+          tint40: '#F9C199',
+        },
+        cream: {
+          DEFAULT: '#FFE6B4', // boutons sur fond violet — texte navy
+          hover: '#FFD98F',
+        },
+        lila: {
+          light: '#EFECF9', // fonds de section alternés
+          DEFAULT: '#C7C4D8', // bordures, séparateurs
         },
         navy: {
           700: '#2D3A5A',
@@ -78,7 +92,7 @@ const config: Config = {
       boxShadow: {
         xs: '0 1px 3px rgba(26,35,64,0.06)',
         sm: '0 2px 8px rgba(26,35,64,0.08)',
-        md: '0 4px 20px rgba(13,158,142,0.10), 0 1px 4px rgba(0,0,0,0.04)',
+        md: '0 4px 20px rgba(141,60,255,0.12), 0 1px 4px rgba(0,0,0,0.04)',
         lg: '0 8px 40px rgba(26,35,64,0.12)',
       },
       maxWidth: {
@@ -86,7 +100,7 @@ const config: Config = {
       },
       backgroundImage: {
         'hero-glow':
-          'radial-gradient(circle at 92% 8%, rgba(13,158,142,0.09) 0%, transparent 46%)',
+          'radial-gradient(circle at 92% 8%, rgba(141,60,255,0.09) 0%, transparent 46%)',
       },
     },
   },
