@@ -30,7 +30,7 @@ export const metadata: Metadata = {
    * « Sam'Va » génère alors du code invalide et casse le build en local.
    * Voir le rapport de session. Ne pas remettre l'icône dans app/.
    */
-  icons: { icon: '/icon.svg' },
+  icons: { icon: '/logo-sam-icon.png' },
   title: "SAM — S'occupe de tout, vous vous occupez d'eux",
   description:
     'SAM est le SIRH qui décharge vos équipes de la saisie, sécurise vos plannings sur la réglementation et automatise contrats et DPAE.',
