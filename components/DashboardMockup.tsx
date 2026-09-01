@@ -45,7 +45,14 @@ export function DashboardMockup() {
         <div className="grid min-h-[300px] grid-cols-[108px_1fr]">
           {/* Sidebar */}
           <div className="flex flex-col gap-3 border-r border-hairline bg-violet-tint7 px-[14px] py-[18px]">
-            <div className="text-xs font-extrabold text-violet-500">SAM</div>
+            {/* Icône officielle compacte, façon logo d'app en barre latérale
+                (plus fini qu'un texte brut, lisible même petit). */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- logo local, taille fixe */}
+            <img
+              src="/logo-sam-icon.png"
+              alt="SAM"
+              className="h-6 w-6 rounded-[6px]"
+            />
             {SIDEBAR_ROWS.map((row, i) => (
               <div
                 key={i}
