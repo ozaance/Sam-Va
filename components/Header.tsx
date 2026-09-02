@@ -4,11 +4,18 @@ import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Logo } from './Logo'
 
+// Ancres préfixées par « / » pour fonctionner depuis n'importe quelle page
+// (ex. l'article Ressources), pas seulement l'accueil. « Ressources » pointe
+// vers l'article ; à transformer en index /ressources s'il y en a plusieurs.
 const NAV_LINKS = [
-  { href: '#features', label: 'Fonctionnalités' },
-  { href: '#solution', label: 'La solution' },
-  { href: '#histoire', label: 'Notre histoire' },
-  { href: '#contact', label: 'Connexion' },
+  { href: '/#features', label: 'Fonctionnalités' },
+  { href: '/#solution', label: 'La solution' },
+  { href: '/#histoire', label: 'Notre histoire' },
+  {
+    href: '/ressources/absence-imprevue-etablissement-medico-social',
+    label: 'Ressources',
+  },
+  { href: '/#contact', label: 'Connexion' },
 ]
 
 export function Header() {
@@ -46,7 +53,7 @@ export function Header() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             className="rounded-sm bg-violet-500 px-[22px] py-[10px] text-sm font-bold text-white transition-colors hover:bg-violet-400"
           >
             Espace Employeur
@@ -82,7 +89,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-sm bg-violet-500 px-[22px] py-3 text-center text-sm font-bold text-white"
             >
