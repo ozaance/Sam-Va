@@ -584,11 +584,14 @@ else if(data.message)message=data.message;
 }catch(e){message=text.slice(0,200)}
 if(res.status===401){forgetPassword();return 'Mot de passe incorrect : saisissez-le de nouveau'}
 if(res.status===413)return 'Images trop lourdes (413). Essayez avec moins de photos.';
+if(res.status===503)return 'Agnes est saturé depuis plusieurs minutes (file pleine). Réessayez plus tard.';
 return 'Erreur '+res.status+(message?' : '+message:'');
 }
 
-// retrySafe=false pour la création : on ne relance que sur 429 (tâche non créée), jamais sur une erreur ambiguë
-async function apiFetch(url,options={},label='API',retrySafe=true){
+// retrySafe=false pour la création : on ne relance que sur 429 et 503 (Agnes refuse avant de créer la tâche),
+// jamais sur une erreur ambiguë qui pourrait créer une vidéo en double.
+// onWait(texte) permet d'afficher l'attente dans la file.
+async function apiFetch(url,options={},label='API',retrySafe=true,onWait=null){
 const waits=[15,30,45,60,90,120,180];
 for(let i=0;i<7;i++){
 if(state.stopRequested)throw new Error(STOP_MESSAGE);
@@ -600,8 +603,14 @@ if(!retrySafe||i===6)throw new Error(label+' : réseau inaccessible ('+e.message
 await sleepOrStop(5000,s=>setStatus(label+' : réseau instable — nouvel essai dans '+Math.ceil(s)+'s'));
 continue;
 }
-if(res.status===429){
-await sleepOrStop(waits[i]*1000,s=>setStatus('Limite API — attente '+Math.ceil(s)+'s'));
+// 429 = trop de requêtes ; 503 = file de génération Agnes pleine (« video queue is full »)
+if((res.status===429||res.status===503)&&i<6){
+const reason=res.status===503?'File Agnes pleine':'Limite API atteinte';
+await sleepOrStop(waits[i]*1000,s=>{
+const text=reason+' — essai '+(i+2)+'/7 dans '+Math.ceil(s)+'s';
+setStatus(text);
+if(onWait)onWait(text);
+});
 continue;
 }
 if(res.status>=500&&retrySafe&&i<6){
@@ -610,10 +619,10 @@ continue;
 }
 return res;
 }
-throw new Error(label+' : limite API toujours atteinte, réessayez plus tard');
+throw new Error(label+' : réseau inaccessible');
 }
 
-async function createVideoTask(prompt,images){
+async function createVideoTask(prompt,images,onWait){
 // Le modèle, le mode et le format 9:16 sont fixés côté serveur (api/videos.js)
 const body={
 prompt,
@@ -621,7 +630,7 @@ seconds:state.durationSeconds,
 images,
 seed:Math.floor(Math.random()*2147483647)
 };
-const res=await apiFetch(API_BASE+'/videos',{method:'POST',headers:authHeaders({'Content-Type':'application/json'}),body:JSON.stringify(body)},'Création',false);
+const res=await apiFetch(API_BASE+'/videos',{method:'POST',headers:authHeaders({'Content-Type':'application/json'}),body:JSON.stringify(body)},'Création',false,onWait);
 if(!res.ok)throw new Error(await readApiError(res));
 const data=await res.json();
 const videoId=data.video_id||data.id||data.task_id;
@@ -689,7 +698,7 @@ grid.prepend(card);
 async function runQueueItem(item,prompt,images){
 item.status='creating';item.message='Envoi de la demande…';renderQueue();
 setStatus(item.label+' — envoi de la demande…');
-item.videoId=await createVideoTask(prompt,images);
+item.videoId=await createVideoTask(prompt,images,text=>{item.message=text;renderQueue()});
 log(item.label+' créée : '+item.videoId);
 item.status='processing';item.message='En file d\'attente';renderQueue();
 item.url=await pollVideoTask(item);
