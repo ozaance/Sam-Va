@@ -18,8 +18,10 @@ export function guard(req, res, method) {
     sendError(res, 405, 'Méthode non autorisée');
     return false;
   }
-  if (!process.env.AGNES_API_KEY || !process.env.APP_PASSWORD) {
-    sendError(res, 500, 'Serveur non configuré : AGNES_API_KEY et APP_PASSWORD sont requis');
+  // Nomme les variables absentes (jamais leur valeur) pour faciliter la configuration sur Vercel
+  const missing = ['AGNES_API_KEY', 'APP_PASSWORD'].filter((name) => !process.env[name]);
+  if (missing.length) {
+    sendError(res, 500, `Serveur non configuré : variable(s) manquante(s) ${missing.join(', ')}`);
     return false;
   }
   // Comparaison à temps constant (via empreintes de même longueur)
