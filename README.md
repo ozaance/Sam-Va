@@ -1,62 +1,34 @@
-# SAM'va — Site
+# Studio UGC
 
-Landing page SAM'va (Solution d'Accompagnement Mutualisé), implémentée depuis le
-bundle Claude Design `SAMva Site.dc.html`.
+Génère des vidéos publicitaires de style UGC (portrait 9:16) à partir de photos d'une personne et d'un produit, avec le modèle `agnes-video-2.5-flash` d'Agnes AI.
 
-## Stack
+## Fonctionnement
 
-- **Next.js 15** (App Router, TypeScript)
-- **Tailwind CSS 3.4** — tokens du design system dans `tailwind.config.ts`
-- **DM Sans** via `next/font/google` (auto-hébergée, 400–800)
-- **lucide-react** pour les icônes
+- `index.html` : la page. Elle ne contient aucune clé.
+- `api/videos.js` : crée une vidéo chez Agnes.
+- `api/video-status.js` : suit l'avancement d'une vidéo.
 
-## Démarrer
+La clé Agnes ne quitte jamais le serveur. Le navigateur envoie seulement un mot de passe d'accès, vérifié par les fonctions `/api` avant tout appel à Agnes.
 
-```bash
-npm install
-npm run dev     # http://localhost:3000
-npm run build   # build de production
+## Variables d'environnement (Vercel → Settings → Environment Variables)
+
+| Variable | Contenu |
+| - | - |
+| `AGNES_API_KEY` | Votre clé Agnes (platform.agnes-ai.com → Settings → API Keys) |
+| `APP_PASSWORD` | Le mot de passe à saisir dans la page. Long et aléatoire, par exemple `openssl rand -base64 24` |
+
+Après avoir ajouté ou modifié une variable, redéployez le projet pour qu'elle soit prise en compte.
+
+## Limites
+
+- 5 images de référence au maximum par vidéo. Une vidéo déposée est remplacée par une image extraite.
+- Durée de 4 à 12 secondes, en 720P.
+- Les images sont recompressées pour rester sous la limite de 4,5 Mo par requête imposée par Vercel.
+
+## Test en local
+
+```
+npx vercel dev
 ```
 
-## Structure
-
-```
-app/
-  layout.tsx      police DM Sans + métadonnées
-  globals.css     tokens CSS (§10 du design system) + classes .shell / .section-pad / .eyebrow
-  page.tsx        assemblage des sections
-components/
-  Header.tsx            nav sticky 68px + menu mobile
-  Hero.tsx              accroche + CTA
-  DashboardMockup.tsx   mockup navigateur du hero
-  TrustedBy.tsx         bandeau partenaires
-  Features.tsx          colonne sticky + grille 6 cards
-  Network.tsx           mise en relation territoriale
-  Engagements.tsx       3 cards engagements
-  Pricing.tsx           Établissement / Communauté / Coopérative
-  Footer.tsx
-```
-
-## Notes d'implémentation
-
-**Palette figée.** Le fichier de design exposait des props d'exploration
-(5 palettes, corner style, shadow, nav style, visibilité des sections). Les
-valeurs par défaut sont figées dans le code : Teal & Fuchsia, corners Soft
-(card 14px / bouton 8px), shadows Subtle, nav Light, CTA Navy, toutes sections
-visibles.
-
-**Fonctions `color-mix()` résolues.** Le prototype utilisait
-`color-mix(in srgb, var(--accent) N%, #fff)`. La palette étant figée, ces
-expressions sont pré-calculées en hex et exposées comme échelles `teal.tintN` /
-`fuchsia.tintN` dans `tailwind.config.ts`.
-
-**Responsive.** Le prototype était desktop-only (grilles fixes). Les grilles
-passent en une colonne sous `lg`, le padding de section passe de 100px à 68px,
-et la nav bascule sur un menu hamburger. Le rendu est fidèle au pixel à ≥1024px.
-
-## Référence
-
-`samva-design-system.md` (v1.0) reste la source de vérité pour les tokens.
-Attention : sa §9 décrit une structure de page antérieure (Bannière
-Coopérative, Notre Histoire, Technologie). C'est `SAMva Site.dc.html` qui fait
-foi pour la structure réellement implémentée.
+Ouvrez ensuite l'adresse affichée. Ouvrir `index.html` directement ne marche pas : les fonctions `/api` ne tourneraient pas.
